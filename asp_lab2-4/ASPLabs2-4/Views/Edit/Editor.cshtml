@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Editor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model ASPLabs2_4.ViewModels.StationeryCategoryViewModel
+
+<h2>Изменить</h2>
+@using (Html.BeginForm("Editor", "Edit", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(a => a.Stationery.Id)
+    <p>Имя</p>
+    @Html.EditorFor(a => a.Stationery.Name)
+    @Html.ValidationMessageFor(a => a.Stationery.Name)
+    <p>Производитель</p>
+    @Html.EditorFor(a => a.Stationery.Maker)
+    @Html.ValidationMessageFor(a => a.Stationery.Maker)
+    <p>Изображение</p>
+    <input type="file" accept="image/*" value="@Model.Stationery.ImagePath" name="upload">
+    <p>Бренд</p>
+    <input name="Stationery.Brand" value="@(Model.Stationery.Brand)">
+    @Html.ValidationMessageFor(a => a.Stationery.Brand)
+    <p>Цена</p>
+    @Html.EditorFor(a => a.Stationery.Price)
+    @Html.ValidationMessageFor(a => a.Stationery.Price)
+    <p>Категория</p>
+    @Html.DropDownList("CategoryId",
+   Model.Categories.Select(m => new SelectListItem
+   {
+       Selected = m.Id == Model.Stationery.CategoryId ? true : false,
+       Value = m.Id.ToString(),
+       Text = m.Name
+   }),
+   new { @class = "form-control", value = Model.Stationery.CategoryId })
+    <br>
+    <input type="submit" value="Изменить" />
+}
+

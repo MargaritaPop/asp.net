@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Editor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model ASPLabs2_4.Models.Delivery
+
+<h2>Изменить</h2>
+@using (Html.BeginForm("Editor", "Delivery", FormMethod.Post))
+{
+    @Html.EditorForModel()
+    <br>
+    <input type="submit" value="Изменить" />
+}
+

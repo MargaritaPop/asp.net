@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Catalog";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@model List<ASPLabs2_4.Models.Stationery>
+
+<div>
+    <h3>Распродажа товаров</h3>
+    <br>
+    <br>
+    <form class="form-inline">
+        @Html.TextBox("searchString")
+        <input type="submit" value="Поиск">
+    </form>
+    <br>
+    <form class="form-inline">
+        <select name="sort" class="form-control">
+            <option>Все</option>
+            <option value="Имя">Имя</option>
+            <option value="Производитель">Производитель</option>
+            <option value="Цена">Цена</option>
+        </select>
+        <input type="submit" value="Сортировать">
+    </form>
+    <br>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Изображение</th>
+                <th scope="col">Название</th>
+                <th scope="col">Производитель</th>
+                <th scope="col">Бренд</th>
+                <th scope="col">Цена</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var b in Model)
+            {
+            <tr>
+                <td><img width="50" height="50" src="@b.ImagePath" /></td>
+                <td>@b.Name</td>
+                <td>@b.Maker</td>
+                <td>@b.Brand</td>
+                <td>@b.Price</td>
+                <td><a href="/Catalog/Buy/@b.Id">Купить</a></td>
+                <td><a href="/Cart/Add/@b.Id">Добавить в корзину</a></td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+    <h3>Покупка</h3>
+    <form method="post" action="">
+        <input type="hidden" value="@ViewBag.stationery" name="stationery" />
+        <table>
+            <tr>
+                <td><p>Введите свое имя:</p></td>
+                <td>
+                    <input type="text" name="client" />
+                </td>
+            </tr>
+            <tr>
+                <td><p>Введите номер телефона:</p></td>
+                <td>
+                    <input type="text" name="phone" />
+                </td>
+            </tr>
+            <tr>
+                <td><p>Введите адрес:</p></td>
+                <td>
+                    <input type="text" name="address" />
+                </td>
+            </tr>
+            <tr><td><input type="submit" value="Отправить" /> </td><td></td></tr>
+        </table>
+    </form>
+</div>

@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model ASPLabs2_4.Models.Delivery
+
+<h2>Добавление поставки</h2>
+<div>
+    @using (Html.BeginForm("Add", "Delivery", FormMethod.Post))
+    {
+        <p>Введите название</p>
+        @Html.TextBoxFor(a => a.NameOfProduct)
+        @Html.ValidationMessageFor(a => a.NameOfProduct)
+        <br>
+        <p>Введите количество</p>
+        @Html.TextBoxFor(a => a.Count)
+        @Html.ValidationMessageFor(a => a.Count)
+        <br>
+        <br>
+        <input type="submit" value="Добавить">
+    }
+    <br>
+    @Html.ActionLink("Вернуться назад", "Back")
+</div>
+

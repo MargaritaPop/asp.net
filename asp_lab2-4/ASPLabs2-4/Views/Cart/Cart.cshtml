@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model ASPLabs2_4.Cart.Cart
+
+<h2>Корзина</h2>
+<div>
+    @if (Model.Lines.Count() > 0)
+    {
+      
+        <table class="table">
+            <thead>
+                <tr>
+                    <td><p>Название</p></td>
+                    <td><p>Производитель</p></td>
+                    <td><p>Картинка</p></td>
+                    <td><p>Бренд</p></td>
+                    <td><p>Цена</p></td>
+                    <td><p>Количество данного товара для покупки</p></td>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var b in Model.Lines)
+                {
+                <tr>
+                    <td><p>@b.Stationery.Name</p></td>
+                    <td><p>@b.Stationery.Maker</p></td>
+                    <td><img width="50" height="50" src="@b.Stationery.ImagePath" /></td>
+                    <td><p>@b.Stationery.Brand</p></td>
+                    <td><p>@b.Stationery.Price</p></td>
+                    <td><p style="text-align: center;">@b.Quantity</p></td>
+                    <td><a href="/Cart/Delete/@b.Stationery.Id">Удалить из корзины</a></td>
+                </tr>
+                }
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <p>Общая стоимость: @Model.ComputeTotalValue()</p>
+        <div>
+            @Html.ActionLink("Приобрести всё", "Buy", "Catalog")
+            <br>
+            @Html.ActionLink("Очистить всё из корзины", "ClearAll")
+        </div>
+    }
+</div>

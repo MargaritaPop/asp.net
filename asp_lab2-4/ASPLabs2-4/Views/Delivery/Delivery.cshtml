@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Delivery";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model List<ASPLabs2_4.Models.Delivery>
+
+<h2>Поставки</h2>
+
+@Html.ActionLink("Добавить новую поставку", "Add")
+<table class="table">
+    <thead>
+        <tr>
+            <td><p>Название</p></td>
+            <td><p>Количество</p></td>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var b in Model)
+        {
+        <tr>
+            <td><p>@b.NameOfProduct</p></td>
+            <td><p>@b.Count</p></td>
+            <td><p><a href="/Delivery/Info/@b.Id">Детали</a></p></td>
+            <td><p><a href="/Delivery/Editor/@b.Id">Изменить</a></p></td>
+            <td><p><a href="/Delivery/Delete/@b.Id">Удалить</a></p></td>
+        </tr>
+        }
+    </tbody>
+</table>

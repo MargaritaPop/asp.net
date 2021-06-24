@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab4.Views.Producers.AddProducerPage"
+             x:Name="SavePage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="entryStyle" TargetType="Entry">
+                <Style.Triggers>
+                    <Trigger Property="Entry.IsFocused" Value="True" TargetType="Entry">
+                        <Setter Property="TextColor" Value="Blue" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Сохранить" Command="{Binding SaveItemCommand}" CommandParameter="{Binding Source={x:Reference SavePage}}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label Text="Название:" FontSize="Medium" />
+                <Entry Text="{Binding Item.Name}" FontSize="Small" Style="{StaticResource Key=entryStyle}"/>
+                <Label Text="Адрес:" FontSize="Medium" />
+                <Entry Text="{Binding Item.Address}" FontSize="Small" Style="{StaticResource Key=entryStyle}"/>
+                <Label Text="Телефон:" FontSize="Medium" />
+                <Entry Text="{Binding Item.Telephone}" FontSize="Small" Style="{StaticResource Key=entryStyle}"/>
+                <Label Text="Электронная почта:" FontSize="Medium" />
+                <Entry Text="{Binding Item.Email}" FontSize="Small" Style="{StaticResource Key=entryStyle}"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

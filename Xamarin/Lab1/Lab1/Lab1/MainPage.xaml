@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Lab1"
+             x:Class="Lab1.MainPage"
+             >
+        <RelativeLayout>
+            <Label TextColor="Green" FontFamily ="Arial" FontSize="30" x:Name ="lab">Коктельчик</Label>
+            <Picker Title="Список продуктов" TextColor="Blue" FontFamily ="Arial"
+                    ItemsSource="{Binding Cocktails}"
+                    SelectedItem="{Binding Selected}" 
+                    RelativeLayout.YConstraint ="{ConstraintExpression
+                      Type=RelativeToView, ElementName = lab, Property = Y, Factor = 1, Constant = 30}"
+                    x:Name="lis"/>
+            <Picker Title="Избранные продукты" TextColor="Blue" FontFamily ="Arial"
+                    ItemsSource="{Binding ElectCocktails}"
+                    SelectedItem="{Binding Selected}" 
+                    RelativeLayout.YConstraint ="{ConstraintExpression
+                      Type=RelativeToView, ElementName = lis, Property = Y, Factor = 2, Constant = 20}"
+                    x:Name="like"/>
+            <Button Text="Добавить продукт" Command="{Binding AddCommand}" FontFamily ="Arial"
+                    RelativeLayout.YConstraint ="{ConstraintExpression
+                      Type=RelativeToView, ElementName = like, Property = Y, Factor = 1.5, Constant = 20}"
+                    x:Name="but"/>
+            <TableView IsVisible="{Binding DetailsShowed}"
+                       RelativeLayout.YConstraint ="{ConstraintExpression
+                      Type=RelativeToView, ElementName = but, Property = Y, Factor = 1.5, Constant = 20}">
+                <TableView.Root>
+                    <TableRoot>
+                        <TableSection Title="Информация">
+                            <TextCell Text="В избранное"/>
+                            <ViewCell>
+                            <Switch HorizontalOptions="Start" IsToggled="{Binding FormValue.Elected}" IsEnabled="{Binding FormEnabled}"/>
+                            </ViewCell>
+                            <TextCell Text="Название"/>
+                            <ViewCell>
+
+                            <Entry Text="{Binding FormValue.Name}" IsEnabled="{Binding FormEnabled}"/>
+                            </ViewCell>
+                            <TextCell Text="Производитель"/>
+                            <ViewCell>
+                            <Entry Text="{Binding FormValue.Ingredient}" IsEnabled="{Binding FormEnabled}"/>
+                            </ViewCell>
+                            <TextCell Text="Цена "/>
+                            <ViewCell>
+                            <Entry Text="{Binding FormValue.Price}" IsEnabled="{Binding FormEnabled}"/>
+                            </ViewCell>
+                            <TextCell Text="Дата продажи"/>
+                            <ViewCell>
+                            <DatePicker Date="{Binding FormValue.SaleDate}" IsEnabled="{Binding FormEnabled}"/>
+                            </ViewCell>
+                        </TableSection>
+                        <TableSection>
+                            <ViewCell>
+                                <Button Text="Назад" Command="{Binding HideDetailsCommand}" FontFamily ="Arial"/>
+                            </ViewCell>
+                            <ViewCell>
+                                <Button Text="Сохранить" Command="{Binding SaveCommand}" IsVisible="{Binding FormEnabled}" FontFamily ="Arial"/>
+                            </ViewCell>
+                        </TableSection>
+                    </TableRoot>
+                </TableView.Root>
+            </TableView>
+    </RelativeLayout>
+
+</ContentPage>

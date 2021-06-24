@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab2.Views.FavouriteItemsPage"
+             xmlns:conv="clr-namespace:Lab2.Converters"
+              Title="{Binding Title}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <conv:UpperCaseConverter x:Key="upperConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="ItemsListView" 
+                ItemsSource="{Binding ItemGroups}"
+                VerticalOptions="FillAndExpand"
+                 IsGroupingEnabled="True"
+                 GroupDisplayBinding="{Binding Name, StringFormat='Производитель: {0}', Converter={StaticResource upperConverter}}"
+                 HasUnevenRows="true"
+                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                 IsPullToRefreshEnabled="true"
+                 RefreshCommand="{Binding LoadItemsCommand}"
+                 CachingStrategy="RecycleElement"
+                 SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10" Orientation="Horizontal">
+                                <StackLayout>
+                                    <Label Text="{Binding Path=Name, StringFormat='Название: {0}'}" 
+                                        LineBreakMode="NoWrap" 
+                                        Style="{DynamicResource ListItemTextStyle}" 
+                                        FontSize="16" />
+                                    <Label Text="{Binding Path=Price, StringFormat='Цена: {0}$'}" 
+                                        LineBreakMode="NoWrap"
+                                        Style="{DynamicResource ListItemDetailTextStyle}"
+                                        FontSize="13" />
+                                </StackLayout>
+                                <Image Source="{Binding Image}" HeightRequest="120" WidthRequest="60"  Margin="50,0,0,0"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

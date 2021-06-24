@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model ASPLabs2_4.Models.Category
+
+<h2>Удаление категории</h2>
+@using (Html.BeginForm("DeleteConfirmed", "Category", FormMethod.Post))
+{
+    @Html.HiddenFor(a => a.Id)
+    @Html.DisplayForModel()
+    <br>
+    <input type="submit" value="Удалить" />
+}
+

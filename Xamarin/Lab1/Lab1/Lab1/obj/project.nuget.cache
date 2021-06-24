@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "dgSpecHash": "yt/pVyJAnMNgcxcIjg+p1TG2PMMMYdLGxNbFPazsDYvExwnzFx4SZAJdNjKr1o5gxjxD3QN/LTA/JQHF3NWrPw==",
+  "success": false,
+  "projectFilePath": "C:\\Users\\nwoot\\Documents\\Development\\c#\\asp.net\\Xamarin\\Lab1\\Lab1\\Lab1\\Lab1.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package NETStandard.Library. No packages exist with this id in source(s): Microsoft Visual Studio Offline Packages",
+      "libraryId": "NETStandard.Library",
+      "targetGraphs": [
+        ".NETStandard,Version=v2.0"
+      ]
+    },
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package Xamarin.Forms. No packages exist with this id in source(s): Microsoft Visual Studio Offline Packages",
+      "libraryId": "Xamarin.Forms",
+      "targetGraphs": [
+        ".NETStandard,Version=v2.0"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "BoughtAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model ASPLabs2_4.ViewModels.PurchCartViewModel
+
+
+
+<h2>Ваш заказ</h2>
+@if (Model.Count > 1)
+{
+    <h3>№ заказа(ов) @(Model.Order.OrderId-Model.Count) - @Model.Order.OrderId</h3>
+}
+else
+{
+    <h3>№ заказа @Model.Order.OrderId</h3>
+}
+
+
+
+<div>
+    @*@Html.DisplayForModel()*@
+    <p>Имя</p>
+    @Html.DisplayFor(a => a.Order.Client)
+    <br>
+    <br>
+    <p>Адрес</p>
+    @Html.DisplayFor(a => a.Order.Address)
+    <br>
+    <br>
+    <p>Email</p>
+    @Html.DisplayFor(a => a.Order.Email)
+    <br>
+    <br>
+    <p>Номер телефона</p>
+    @Html.DisplayFor(a => a.Order.Phone)
+    <br>
+    <br>
+    <p>Форма оплаты</p>
+    @Html.DisplayFor(a => a.Order.WageType)
+    <br />
+</div>
+
+

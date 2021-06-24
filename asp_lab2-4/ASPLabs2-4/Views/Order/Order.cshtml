@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Order";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<ASPLabs2_4.Models.Order>
+
+<h2>Покупка</h2>
+
+@Html.ActionLink("Добавить новый заказ", "Add")
+<br>
+<br>
+<form class="form-inline">
+    <label>Выберите имя:</label>
+    <select name="client" class="form-control">
+        <option>Все</option>
+        @foreach (var a in Model)
+        {
+            <option value="@a.Client">@a.Client</option>
+        }
+    </select>
+    <label>Выберите способ оплаты:</label>
+    <select name="wageType" class="form-control">
+        <option>Все</option>
+        @foreach (var a in Model)
+        {
+            <option value="@a.WageType">@a.WageType</option>
+        }
+    </select>
+    <input type="submit" value="Фильтр">
+</form>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <td><p>Имя</p></td>
+            <td><p>Адрес</p></td>
+            <td><p>Id товара</p></td>
+            <td><p>Дата покупки</p></td>
+            <td><p>Email</p></td>
+            <td><p>Phone</p></td>
+            <td><p>Способ оплаты</p></td>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var b in Model)
+        {
+        <tr>
+            <td><p>@b.Client</p></td>
+            <td><p>@b.Address</p></td>
+            <td><p>@b.StationeryId</p></td>
+            <td><p>@b.Date.ToShortDateString()</p></td>
+            <td><p>@b.Email</p></td>
+            <td><p>@b.Phone</p></td>
+            <td><p>@b.WageType</p></td>
+            <td><p><a href="/Order/Info/@b.OrderId">Детали</a></p></td>
+            <td><p><a href="/Order/Editor/@b.OrderId">Изменить</a></p></td>
+            <td><p><a href="/Order/Delete/@b.OrderId">Удалить</a></p></td>
+        </tr>
+        }
+    </tbody>
+</table>

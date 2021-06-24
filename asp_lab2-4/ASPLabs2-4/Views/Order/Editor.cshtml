@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Editor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model ASPLabs2_4.Models.Order
+
+<h2>Изменить</h2>
+@using (Html.BeginForm("Editor", "Order", FormMethod.Post))
+{
+    @Html.HiddenFor(a => a.OrderId)
+    <p>Имя</p>
+    @Html.EditorFor(a => a.Client)
+    @Html.ValidationMessageFor(a => a.Client)
+    <p>Адрес</p>
+    @Html.EditorFor(a => a.Address)
+    @Html.ValidationMessageFor(a => a.Address)
+    <p>Id электроники</p>
+    @Html.EditorFor(a => a.ElectronicId)
+    @Html.ValidationMessageFor(a => a.ElectronicId)
+    <p>Дата покупки</p>
+    <input type="date" name="Date" value="@(Model.Date.ToString("yyyy-MM-dd"))">
+    @Html.ValidationMessageFor(a => a.Date)
+    <p>Email</p>
+    @Html.EditorFor(a => a.Email)
+    @Html.ValidationMessageFor(a => a.Email)
+    <p>Телефон</p>
+    @Html.EditorFor(a => a.Phone)
+    @Html.ValidationMessageFor(a => a.Phone)
+    <p>Способ оплаты</p>
+    @Html.EditorFor(a => a.WageType)
+    @Html.ValidationMessageFor(a => a.WageType)
+    <br>
+    <br>
+    <input type="submit" value="Изменить" />
+}
+

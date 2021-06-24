@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model ASPLabs2_4.Models.Order
+
+<h2>Добавление покупки</h2>
+<div>
+    @using (Html.BeginForm("Add", "Order", FormMethod.Post))
+    {
+        <p>Введите имя</p>
+        @Html.TextBoxFor(a => a.Client)
+        @Html.ValidationMessageFor(a => a.Client)
+        <br>
+        <p>Введите адрес</p>
+        @Html.TextBoxFor(a => a.Address)
+        @Html.ValidationMessageFor(a => a.Address)
+        <p>Введите Id товара</p>
+        @Html.TextBoxFor(a => a.StationeryId)
+        @Html.ValidationMessageFor(a => a.StationeryId)
+        <br>
+        <p>Введите Email</p>
+        @Html.TextBoxFor(a => a.Email)
+        @Html.ValidationMessageFor(a => a.Email)
+        <br>
+        <p>Введите Phone</p>
+        @Html.TextBoxFor(a => a.Phone)
+        @Html.ValidationMessageFor(a => a.Phone)
+        <br>
+        <p>Выберите форму оплаты</p>
+        @Html.RadioButtonFor(m => m.WageType, "Карта")
+        <span>Карта</span> <br />
+        @Html.RadioButtonFor(m => m.WageType, "Наличные")
+        <span>Наличные</span> <br />
+        @Html.RadioButtonFor(m => m.WageType, "Наложенным платежом")
+        <span>Наложенным платежом</span>
+        @Html.ValidationMessageFor(a => a.WageType)
+        <br>
+        <br>
+        <input type="submit" value="Добавить">
+    }
+    <br>
+    @Html.ActionLink("Вернуться назад", "Back")
+</div>
+

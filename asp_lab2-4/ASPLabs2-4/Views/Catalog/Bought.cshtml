@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Bought";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model ASPLabs2_4.Models.Order
+
+<h2>Ваш заказ</h2>
+<h3>№ заказа @Model.OrderId</h3>
+<div>
+    @Html.DisplayForModel()
+</div>
+

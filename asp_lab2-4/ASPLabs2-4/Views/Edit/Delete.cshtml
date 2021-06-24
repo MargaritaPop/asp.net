@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model ASPLabs2_4.Models.Stationery
+
+<h2>Удаление товаровы</h2>
+@using (Html.BeginForm("DeleteConfirmed", "Edit", FormMethod.Post))
+{
+    @Html.HiddenFor(a => a.Id)
+    @*@Html.HiddenFor(a => a.Name)
+    @Html.HiddenFor(a => a.Maker)
+    @Html.HiddenFor(a => a.ImagePath)
+    @Html.HiddenFor(a => a.Brand)
+    @Html.HiddenFor(a => a.Price)*@
+    @Html.DisplayForModel()
+    <br>
+    <input type="submit" value="Удалить" />
+}
+
+

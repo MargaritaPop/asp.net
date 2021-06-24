@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h1 class="display-4">Канцтовары</h1>
+    <section class="d-flex flex-wrap">
+        @{
+            foreach (var stationery in ViewBag.Stationeries)
+            {
+                <div class="card mx-3" style="width: 18rem;">
+                    <img src="@stationery.img" class="card-img-top" alt="icon">
+                    <div class="card-body">
+                        <h5 class="card-title">@stationery.name</h5>
+                        <p class="card-text">@stationery.description</p>
+                        <p class="card-text">Оптовая цена: @stationery.wholesale_price.ToString("c")</p>
+                        <p class="card-text">Розничная цена: @stationery.retail_price.ToString("c")</p>
+                        <a href="/Home/Order/@stationery.id" class="btn btn-primary">Купить</a>
+                    </div>
+                </div>
+            }
+        }
+    </section>
+    <hr />
+    <h2 class="display-4">Заказы</h2>
+    <section class="d-flex flex-wrap">
+        @{
+            foreach (var order in ViewBag.Orders)
+            {
+                <div class="card mx-3" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">@order.client</h5>
+                        <p class="card-text">@order.phone</p>
+                        <p class="card-text">@order.address</p>
+                    </div>
+                </div>
+            }
+        }
+    </section>
+</div>
